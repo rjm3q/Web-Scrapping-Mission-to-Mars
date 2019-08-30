@@ -67,8 +67,62 @@ def scrape():
 #semi circles
     hemi= 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.vist(hemi)
+   
+# dogdogdog
+    links = soup.find_all('h3')
+    browser.click_link_by_partial_text('Cerberus')
+    time.sleep(1)
+    browser.click_link_by_partial_text('Sample')
+    browser.windows.current = browser.windows[1]
+    cerberus_url = browser.url
+    cerberus_dict = {
+        'title': 'Cerberus Hemisphere',
+        'img_url': cerberus_url
+    }
+    browser.windows[1].close()
+    browser.back()
+# Martin SKirelli
+    browser.click_link_by_partial_text('Schiaparelli')
+    time.sleep(1)
+    browser.click_link_by_partial_text('Sample')
+    browser.windows.current = browser.windows[1]
+    schiaparelli_url = browser.url
+    schiaparelli_dict = {
+        'title': 'Schiaparelli Hemisphere',
+        'img_url': schiaparelli_url
+    }
+
+    browser.windows[1].close()
+    browser.back()
+# A tune in SMajor
+    browser.click_link_by_partial_text('Syrtis')
+    time.sleep(1)
+    browser.click_link_by_partial_text('Sample')
+    browser.windows.current = browser.windows[1]
+    syrtis_url = browser.url
+    syrtis_dict = {
+        'title': 'Syrtis Major Hemisphere',
+        'img_url': syrtis_url
+    }
+
+    browser.windows[1].close()
+    browser.back()
+# Clever name No 4
+    browser.click_link_by_partial_text('Valles')
+    time.sleep(1)
+    browser.click_link_by_partial_text('Sample')
+    browser.windows.current = browser.windows[1]
+    valles_url = browser.url
+    valles_dict = {
+        'title': 'Valles Marineris Hemisphere',
+        'img_url': valles_url
+    }
+    browser.quit()
     
-    
+    hemisphere_earls= [cerberus_dict, schiaparelli_dict, syrtis_dict, valles_dict]
+    marsdata['hemisphere_urls']= hemisphere_earls
+#put it all together
+    return marsdata
     
     
     
